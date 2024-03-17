@@ -2,7 +2,7 @@
 
 Ether Finder is a web application that allows users to check the balance of Ethereum addresses on the Ethereum blockchain. It provides a simple interface for users to connect their Ethereum wallets and view the balance of their accounts.
 
-https://github.com/Satyams-23/Ether-Finder/blob/d49ddc79bd7e3c5f174f0c995af0047ca0ab26c0/ether-finder/public/image.png
+<img src="https://github.com/Satyams-23/Ether-Finder/blob/d49ddc79bd7e3c5f174f0c995af0047ca0ab26c0/ether-finder/public/image.png"/>
 
 ## Features
 

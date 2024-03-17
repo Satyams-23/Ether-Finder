@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { ethers } from 'ethers';
 import Image from 'next/image';
 import profile from '../public/th.jpeg';
-import eth from '../public/eth.png';
+import eth from '../public/Eth.png';
 
 const Home = () => {
   const [currentAccount, setCurrentAccount] = useState("");

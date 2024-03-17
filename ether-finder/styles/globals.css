@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat');
+
+*{
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+}
+
+ 
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+    min-height: 100vh;
+    background-image: radial-gradient( circle 815px at 23.4% -21.8%,  rgb(6, 28, 89) 0.2%, rgb(4, 4, 4) 100.2% );
+}
+h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #fff;
+}
+
+
+h3{
+      margin: 10x 0;
+
+}
+h6{
+      margin: 10px 0;
+}
+
+p{
+      margin:  0 auto;
+      line-height: 21px;
+      font-size:  14px;
+      width: 80%;
+      margin-bottom:1rem ;
+
+      
+}
+    
+.card-container{
+  background-image: radial-gradient( rgb(15, 43, 122) 0.2%, rgb(40, 38, 38));
+    border-radius: 25px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.35);
+    color: white;
+    position:relative;
+    max-width: 100%;
+    width: 350px;
+    padding: 30px 0 0;
+
+    text-align: center;
+    margin: 20px 0;
+    padding-bottom: 1.3rem;
+}
+
+.card-container .pro{
+  color: #000;
+  background-color: #8f6e15;
+  border-radius: 3px;
+  padding: 5px 10px;
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  font-size: 14px;
+  font-weight: bold;
+
+}
+
+.card-container .tick{
+  color: #0697f1;
+  background-color: #000;
+  border-radius: 70%;
+  font-size: 15px;
+  font-weight: bold;
+  top: 40px;
+  left: 40px;
+  margin-left: .3rem;
+  /* background-color: blue; */
+}
+
+.skills{
+  background-image: radial-gradient( rgb(15, 43, 122) 0.2%, rgb(40, 38, 38));
+
+  text-align: left;
+  margin-top: 30px ;
+  padding:  20px;
+}
+
+.skills ul{
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.skills ul li{
+border :1px solid #000;
+  margin: 0 7px 7px 0;
+  border-radius: 5px;
+  display:list-item;
+  font-size: 12px;
+  padding: 7px;
+
+}
+
+.message{
+  position:absolute;
+  top: -30%;
+  margin-left: 0;
+  background-image: radial-gradient( rgb(15, 43, 122) 0.2%, rgb(40, 38, 38));
+  padding: 15px 15px;
+  border-radius: 1rem;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.35);
+}

@@ -1,40 +1,121 @@
-import { useState, useEffect } from 'react'
-import { web3modal } from 'web3modal'
-import { ethers } from 'ethers'
+import { useState, useEffect } from 'react';
+import { ethers } from 'ethers';
+import Image from 'next/image';
+import profile from '../public/th.jpeg';
+import eth from '../public/eth.png';
 
 const Home = () => {
+  const [currentAccount, setCurrentAccount] = useState("");
+  const [balance, setBalance] = useState(0);
+  const [failMessage, setFailMessage] = useState("Please install Metamask and connect your Metamask");
+  const [connect, setConnect] = useState(false);
 
-  const [currentAccount, setCurrentAccount] = useState("")//state to store the current account address of the user and display it on the page 
-  const [connect, setConnect] = useState(false)//state to store the connection status of the user
-  const [balance, setBalance] = useState(0)//state to store the balance of the user
+  const INFURA_ID = `${process.env.NEXT_PUBLIC_INFURA_ID}`;
+  const provider = new ethers.providers.JsonRpcProvider(`https://sepolia.infura.io/v3/${INFURA_ID}`);
 
-  const failmeassgae = "Please install metamask and connect your Metamask";
-  const successmessage = "Successfully connected to Metamask";
-
-  const INFURA_ID = "260cdf04c6e24ec68b77c808f84416d2";
-
-  const provider = new ethers.providers.JsonRpcProvider(`https://mainnet.infura.io/v3/${INFURA_ID}`);
-
-  const checkifWalletConnected = async () => {
+  const checkIfWalletConnected = async () => {
     if (!window.ethereum) return;
 
-    const accounts = await window.ethereum.request({ method: "eth_accounts" })
+    const accounts = await window.ethereum.request({ method: "eth_accounts" });
 
     if (accounts.length) {
-      setCurrentAccount(account[0]);
-
+      setCurrentAccount(accounts[0]);
+      setConnect(true);
     } else {
-      return failMessage;
+      console.log("No account found");
+      setConnect(false);
     }
 
-    const balance = await provider.getBalance();
-  }
+    const address = `${process.env.NEXT_PUBLIC_ADDRESS}`;
+    const balance = await provider.getBalance(address);
+    const showBalance = ethers.utils.formatEther(balance);
+    setBalance(showBalance);
+    console.log("Balance: ", balance);
+  };
+
+  const connectWallet = async () => {
+    if (!window.ethereum) return console.log(failMessage);
+
+    const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+
+    setCurrentAccount(accounts[0]);
+    window.location.reload();
+  };
+
+  useEffect(() => {
+    checkIfWalletConnected();
+  },);
+
+  useEffect(() => {
+    async function accountChanged() {
+      window.ethereum.on("accountsChanged", async function () {
+        const accounts = await window.ethereum.request({
+          method: "eth_accounts",
+        });
+
+        if (accounts.length) {
+          setCurrentAccount(accounts[0]);
+          setConnect(true);
+        } else {
+          setConnect(false);
+          window.location.reload();
+        }
+      });
+    }
+    accountChanged();
+  }, []);
+
   return (
     <div>
-      <h1>Home</h1>
+      <div className="card-container">
+        {!currentAccount ? "" : <span className="pro">PRO</span>}
+        <Image src={profile} alt="profile" width={80} height={80} />
+        <h2>Check Ether</h2>
 
+        {!currentAccount && !connect ? (
+          <div>
+            <div className="message">
+              <p>{failMessage}</p>
+            </div>
+            <Image src={eth} alt="ether" width={100} height={100} />
+            <p>Welcome to ether account balance checker</p>
+          </div>
+        ) : (
+          <div>
+            <h4>
+              Verified <span className="tick">&#10004;</span>
+            </h4>
+            <p>
+              Ether account and balance checker <br /> Find account details
+            </p>
+            <div className="buttons">
+              <button className="primary ghost" onClick={() => { }}>
+                Ether Account Details
+              </button>
+            </div>
+          </div>
+        )}
+
+        {!currentAccount && !connect ? (
+          <div className="button">
+            <button className="primary" onClick={connectWallet}>Connect Wallet</button>
+          </div>
+        ) : (
+          <div className="skills">
+            <h6>Your Ether</h6>
+            <ul>
+              <li>Accounts</li>
+              <li>{currentAccount}</li>
+              <li>Balance</li>
+              <li>{balance}</li>
+            </ul>
+          </div>
+        )}
+
+
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

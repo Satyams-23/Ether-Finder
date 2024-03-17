@@ -108,6 +108,9 @@ border :1px solid #000;
   padding: 7px;
 
 }
+button {
+  cursor: pointer;
+}
 
 .message{
   position:absolute;

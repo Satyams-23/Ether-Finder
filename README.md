@@ -2,7 +2,7 @@
 
 Ether Finder is a web application that allows users to check the balance of Ethereum addresses on the Ethereum blockchain. It provides a simple interface for users to connect their Ethereum wallets and view the balance of their accounts.
 
-[Ether Finder Preview](/path/to/preview/image.png)
+[Ether Finder Preview](https://github.com/Satyams-23/Ether-Finder/blob/d49ddc79bd7e3c5f174f0c995af0047ca0ab26c0/ether-finder/public/image.png)
 
 ## Features
 
@@ -28,19 +28,9 @@ Follow these instructions to get a copy of the project up and running on your lo
 Navigate to the project directory:
  
    ```bash
- cd ether-finder
+ cd ether-finder.
 
-2.Install dependencies:
-
-   ```bash
-
-  npm install
-
-bash
-npm run dev
-Open your web browser and navigate to http://localhost:3000 to view the application.
-
-Built With
+### Built With:
 Next.js - React framework for building server-side rendered applications
 ethers.js - Ethereum library for interacting with the Ethereum blockchain
 Web3Modal - Library for integrating Ethereum wallets into web applications
